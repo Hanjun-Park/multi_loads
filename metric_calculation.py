@@ -1,4 +1,6 @@
-def evaluate_model(model_name, y_true, y_pred, logger):
+
+
+def metric_calculation(model_name, y_true, y_pred, logger):
     """Calculates and prints RMSE and R^2 for each load."""
     logger.info(f"----- Evaluating Model: {model_name} -----")
     if y_true.ndim == 1:
@@ -21,3 +23,7 @@ def evaluate_model(model_name, y_true, y_pred, logger):
             logger.info(f"  - Load {i+1}: RMSE = {rmse:.4f}, R^2 = {r2s:.4f}")
     logger.info("-" * 50)
     return overall_rmse, overall_r2
+
+
+# Usage
+rmse, r2 = metric_calculation(f"{model_name} (k={k})", y_test_numpy, y_pred, logger)
